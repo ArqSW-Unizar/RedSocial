@@ -3,9 +3,9 @@
     <parallax class="page-header header-filter" :style="headerStyle">
       <div class="md-layout">
         <div class="md-layout-item">
-          <div class="image-wrapper">            
+          <div class="image-wrapper">
             <div class="brand">
-              <h1>RED SOCIAL - UNIZAR</h1>
+              <h1 >RED SOCIAL - UNIZAR</h1>
               <h3>Desarrollado para la asignatura de Arquitectura Software.</h3>
             </div>
           </div>
@@ -55,7 +55,6 @@
           <javascript-components></javascript-components>
         </div>
       </div>
-      
     </div>
   </div>
 </template>
@@ -70,7 +69,6 @@ import Notifications from "./components/NotificationsSection";
 import TypographyImages from "./components/TypographyImagesSection";
 import JavascriptComponents from "./components/JavascriptComponentsSection";
 
-
 export default {
   components: {
     BasicElements,
@@ -80,15 +78,14 @@ export default {
     NavPills,
     Notifications,
     TypographyImages,
-    JavascriptComponents,
-    
+    JavascriptComponents
   },
   name: "index",
   bodyClass: "index-page",
   props: {
     image: {
       type: String,
-      default: require("@/assets/img/fondo2.jpeg")
+      default: require("@/assets/img/Fondo_Ada_Byron.jpg")
     }
   },
   computed: {
@@ -96,7 +93,7 @@ export default {
       return {
         backgroundImage: `url(${this.image})`
       };
-    },
+    }
   }
 };
 </script>

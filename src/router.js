@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Index from "./views/Index.vue";
+import Login from "./views/Login.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 
@@ -18,14 +19,13 @@ export default new Router({
       }
     },
     {
-      path: "/*", // Aqui estaría bien que pusieramos una pantalla de error.
-      name: "otherwise",
-      components: { default: Index, header: MainNavbar, footer: MainFooter },
+      path: "/login",
+      name: "login",
+      components: { default: Login, header: MainNavbar, footer: MainFooter },
       props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
+        header: { colorOnScroll: 400 }
       }
-    },
+    }
   ],
   scrollBehavior: to => {
     if (to.hash) {

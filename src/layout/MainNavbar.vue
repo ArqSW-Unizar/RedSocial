@@ -30,40 +30,36 @@
               <li class="md-list-item" v-if="showDownload">
                 <a
                   href="javascript:void(0)"
-                  class="md-list-item-router md-list-item-container md-button-clean dropdown"
+                  class="md-list-item-router md-list-item-container md-button-clean"
                 >
                   <div class="md-list-item-content">
-                    <drop-down direction="down">
+                    
                       <md-button
                         slot="title"
-                        class="md-button md-button-link md-white md-simple dropdown-toggle"
-                        data-toggle="dropdown"
+                        class="md-button md-button-link md-white md-simple"
                       >
-                        <i class="material-icons">apps</i>
-                        <p>Components</p>
+                        <i class="material-icons">info</i>
+                        <p>Sobre nosotros</p>
                       </md-button>
-                      <ul class="dropdown-menu dropdown-with-icons">
-                        <li>
-                          <a href="#/">
-                            <i class="material-icons">layers</i>
-                            <p>All Components</p>
-                          </a>
-                        </li>
-                      </ul>
-                    </drop-down>
+                   </div>
+                </a>
+              </li>
+              <li class="md-list-item" v-if="showDownload">
+              <a
+                  href="javascript:void(0)"
+                  class="md-list-item-router md-list-item-container md-button-clean"
+                >
+                  <div class="md-list-item-content">
+                     <div class="md-list-item-content">
+                            <md-button class="md-info md-default"
+                              >LOGIN</md-button
+                            >
+                          </div>
                   </div>
                 </a>
               </li>
-
-              <md-list-item
-                href="https://demos.creative-tim.com/vue-material-kit/documentation/"
-                target="_blank"
-                v-if="showDownload"
-              >
-                <i class="material-icons">content_paste</i>
-                <p>Documentation</p>
-              </md-list-item>
             </md-list>
+            
           </div>
         </div>
       </div>
