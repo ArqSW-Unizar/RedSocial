@@ -1,5 +1,5 @@
 <template>
-  <md-toolbar
+  <md-toolbar v-if="showDownload"
     id="toolbar"
     md-elevation="0"
     class="md-transparent md-absolute"
@@ -11,15 +11,7 @@
         <h3 class="md-title"><b>Red Social Arquitectura Software</b></h3>
       </div>
       <div class="md-toolbar-section-end">
-        <md-button
-          class="md-just-icon md-simple md-toolbar-toggle"
-          :class="{ toggled: toggledClass }"
-          @click="toggleNavbarMobile()"
-        >
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </md-button>
+        
 
         <div class="md-collapse">
           <div class="md-collapse-wrapper">
@@ -104,7 +96,7 @@ export default {
     },
     colorOnScroll: {
       type: Number,
-      default: 0
+      default: 4
     }
   },
   data() {
@@ -114,7 +106,7 @@ export default {
     };
   },
   computed: {
-    showDownload() {
+    showDownload() { //Para que alguna clase no incluya la navbar
       const excludedRoutes = [""];
       return excludedRoutes.every(r => r !== this.$route.name);
     }
@@ -151,7 +143,7 @@ export default {
       } else {
         if (this.extraNavClasses) {
           this.extraNavClasses = "";
-          navbarColor.classList.add("md-transparent");
+          navbarColor.classList.add("md-t");
         }
       }
     },
