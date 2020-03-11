@@ -15,12 +15,52 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
+import VueSession from 'vue-session'
+
+import VueRouter from 'vue-router'
+
+// conexion
+import Axios from 'axios'
 
 import MaterialKit from "./plugins/material-kit";
+import Chartist from 'chartist'
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (localStorage.getItem('jwt') == null) {
+      next({
+        path: '/login',
+        params: { nextUrl: to.fullPath }
+      })
+    } else {
+      let user = JSON.parse(localStorage.getItem('user'))
+      if (to.matched.some(record => record.meta.is_admin)) {
+        if (user.is_admin === 1) {
+          next()
+        } else {
+          next({ name: 'userboard' })
+        }
+      } else {
+        next()
+      }
+    }
+  } else if (to.matched.some(record => record.meta.guest)) {
+    if (localStorage.getItem('jwt') == null) {
+      next()
+    } else {
+      next({ name: 'userboard' })
+    }
+  } else {
+    next()
+  }
+})
 
 Vue.config.productionTip = false;
-
+Vue.use(VueRouter)
 Vue.use(MaterialKit);
+Vue.use(VueSession)
+
+Vue.prototype.$http = Axios
 
 const NavbarStore = {
   showNavbar: false
@@ -34,7 +74,19 @@ Vue.mixin({
   }
 });
 
+// global library setup
+Object.defineProperty(Vue.prototype, '$Chartist', {
+  get () {
+    return this.$root.Chartist
+  }
+})
+
+/* eslint-disable no-new */
 new Vue({
+  el: '#app',
+  render: h => h(App),
   router,
-  render: h => h(App)
-}).$mount("#app");
+  data: {
+    Chartist: Chartist
+  }
+})

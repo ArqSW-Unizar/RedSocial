@@ -19,7 +19,7 @@
                  <md-field class="md-form-group" slot="inputs">
                 <md-icon>account_box</md-icon>
                 <label>Username</label>
-                <md-input v-model="firstname"></md-input>
+                <md-input v-model="username"></md-input>
               </md-field>
               <md-field class="md-form-group" slot="inputs">
                 <md-icon>lock_outline</md-icon>
@@ -27,21 +27,22 @@
                 <md-input v-model="password"></md-input>
               </md-field>
               <md-field class="md-form-group" slot="inputs">
+                <md-icon>lock_outline</md-icon>
+                <label>Repeat Password</label>
+                <md-input v-model="passrepeat"></md-input>
+              </md-field>
+              <md-field class="md-form-group" slot="inputs">
                   <md-icon></md-icon>
                 <label>Name</label>
-                <md-input v-model="firstname"></md-input>
+                <md-input v-model="name"></md-input>
               </md-field>
               <md-field class="md-form-group" slot="inputs">
                   <md-icon></md-icon>
                 <label>email</label>
-                <md-input v-model="firstname"></md-input>
+                <md-input v-model="email"></md-input>
               </md-field>
-              <md-field class="md-form-group" slot="inputs">
-                  <md-icon></md-icon>
-                <label>+ campos</label>
-                <md-input v-model="firstname"></md-input>
-              </md-field>
-              <md-button slot="footer" class="md-info md-round">Confirmar</md-button>
+              <md-button slot="footer" class="md-info md-round" type="submit" @click="handleSubmit()">Confirmar</md-button>
+              
             </login-card>
           </div>
         </div>
@@ -61,10 +62,31 @@ export default {
   data() {
     return {
       RSUnizar: require("@/assets/img/logoRSUnizar.png"),
-      firstname: null,
+      sha512: require('crypto-js/sha512'),
+      responsive: false,
+      username: null,
       email: null,
-      password: null
+      password: null,
+      name: null,
+      passrepeat: null
     };
+  },
+  methods: {
+    handleSubmit () {
+      console.log("Entra a registrar")
+      if (this.password === this.passrepeat && this.password.length > 0) {
+        let url = 'http://localhost:3000/api/usuario/register'
+        this.$http.post(url, {
+          username: this.username,
+          name: this.name,
+          email: this.email,
+          password: this.sha512(this.password).toString()
+        })
+          .then(response => {
+            this.$router.push('/login')
+          })
+      }
+    }
   },
   props: {
     header: {
@@ -75,7 +97,7 @@ export default {
   computed: {
     headerStyle() {
       return {
-        backgroundImage: `url(${this.header})`
+        backgroundImage: `url(${this.header})`,
       };
     }
   }

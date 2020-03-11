@@ -80,6 +80,7 @@ export default {
     TypographyImages,
     JavascriptComponents
   },
+
   name: "index",
   bodyClass: "index-page",
   props: {
