@@ -29,9 +29,17 @@ const login = function (data, res) {
   })
 }
 
+const crearTema = function (data, res) {
+  let sql = 'INSERT INTO tema (creador, titulo, descripcion, etiqueta, fecha) VALUES (?)'
+  connection.query(sql, [data], function (err, result) {
+    if (err) throw err
+    res.status(200).send()
+  }) 
+} 
 
 
 module.exports = {
   register: register,
-  login: login
+  login: login,
+  crearTema: crearTema
 }

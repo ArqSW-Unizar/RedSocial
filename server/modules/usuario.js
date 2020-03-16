@@ -21,7 +21,19 @@ const loginUsuario = function (req, res) {
   bd.login(data, res)
 }
 
+const crearTema = function (req, res) {
+  let data = [
+    null,
+    req.body.titulo,
+    req.body.description,
+    req.body.etiqueta,
+    null
+  ]
+  bd.crearTema(data, res)
+}
+
 module.exports = {
   registrarUsuario: registrarUsuario,
-  loginUsuario: loginUsuario
+  loginUsuario: loginUsuario,
+  crearTema: crearTema
 }

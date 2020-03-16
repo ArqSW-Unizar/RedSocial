@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Index from "./views/Index.vue";
 import Login from "./views/Login.vue";
 import Registro from "./views/Registro.vue";
+import Tema from "./views/Tema.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 
@@ -31,6 +32,14 @@ export default new Router({
       path: "/registro",
       name: "registro",
       components: { default: Registro, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 }
+      }
+    },
+    {
+      path: "/crearTema",
+      name: "crearTema",
+      components: { default: Tema, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 }
       }
