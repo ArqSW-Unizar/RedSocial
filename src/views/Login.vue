@@ -11,6 +11,7 @@
           <div
             class="md-layout-item md-size-33 md-small-size-66 md-xsmall-size-100 md-medium-size-40 mx-auto"
           >
+          <template v-if="!authenticated">
             <login-card header-color="info">
                 
               <h4 slot="title" class="card-title">Login</h4>
@@ -34,6 +35,23 @@
                 ¿No tienes cuenta?<br>Regístrate aquí
               </md-button>
             </login-card>
+             </template>
+
+            <template v-if="authenticated">
+          <md-card>
+            <md-card-header :data-background-color="dataBackgroundColor">
+              <h4 class="title" >Logout</h4>
+            </md-card-header>
+            <md-card-content>
+              <div class="md-layout">
+                <h3>Si ha terminado la actividad por favor cierre sesión</h3>
+                <div class="md-layout-item md-size-100 text-left">
+                  <md-button class="md-raised" type="submit" @click="handleLogout" :data-background-color="dataBackgroundColor">Logout</md-button>
+                </div>
+              </div>
+            </md-card-content>
+          </md-card>
+        </template>
           </div>
         </div>
       </div>
@@ -47,6 +65,9 @@ import { LoginCard } from "@/components";
 export default {
   components: {
     LoginCard
+  },
+  created () {
+    this.authenticated = this.$session.exists()
   },
   methods: {
     handleSubmit (e) {
@@ -63,8 +84,8 @@ export default {
             this.$session.start()
             this.$session.set('idusuario', response.data['nick'])
             this.$session.set('tipo', response.data['tipo'])
-            this.$router.push('/')
             this.$emit('logueado',true)
+            this.$router.push('/')
             //location.reload()
             
           }else{
@@ -74,6 +95,20 @@ export default {
             this.errores.exist = true
           }
         })
+    },
+    handleLogout (e) {
+      e.preventDefault()
+      
+      this.$session.destroy()
+      this.authenticated = false
+      //location.reload()
+      
+      this.$router.push('/')
+      this.actualizar(false)
+    },
+    
+    actualizar(b) {
+      this.$emit('logueado',b)
     }
  },
   bodyClass: "login-page",

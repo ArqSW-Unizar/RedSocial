@@ -45,19 +45,13 @@
                   <div class="md-list-item-content">
                      <div class="md-list-item-content">
                             <md-button class="md-info md-default" type="submit" v-on:click="loguearte()"
-                              >LOGIN</md-button
+                              >{{tipo}}</md-button
                             >
                           </div>
                   </div>
                 </a>
               </li>
               <div class="md-collapse">
-          <md-list>
-            <md-list-item to="/login">
-              <i class="material-icons">account_circle</i>
-              <h4>{{tipo}}</h4>
-            </md-list-item>
-          </md-list>
         </div>
             </md-list>
             
@@ -116,6 +110,7 @@ export default {
       tipo: null
     };
   },
+  
   computed: {
     showDownload() { //Para que alguna clase no incluya la navbar
       const excludedRoutes = [""];
@@ -172,6 +167,7 @@ export default {
     }
   },
   beforeMount () {
+    
     if (this.$session.exists()) {
       this.tipo = 'Cerrar Sesión'
     } else {
