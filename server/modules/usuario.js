@@ -23,11 +23,11 @@ const loginUsuario = function (req, res) {
 
 const crearTema = function (req, res) {
   let data = [
-    null,
+    req.body.creador,
     req.body.titulo,
     req.body.description,
     req.body.etiqueta,
-    null
+    new Date()
   ]
   bd.crearTema(data, res)
 }
