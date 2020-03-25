@@ -39,14 +39,14 @@
 
             <template v-if="authenticated">
           <md-card>
-            <md-card-header :data-background-color="dataBackgroundColor">
-              <h4 class="title" >Logout</h4>
+            <md-card-header>
+              <h4 class="card-title" style="text-align: center;">Logout</h4>
             </md-card-header>
             <md-card-content>
               <div class="md-layout">
                 <h3>Si ha terminado la actividad por favor cierre sesión</h3>
                 <div class="md-layout-item md-size-100 text-left">
-                  <md-button class="md-raised" type="submit" @click="handleLogout" :data-background-color="dataBackgroundColor">Logout</md-button>
+                  <md-button class="md-danger" type="submit" @click="handleLogout">Logout</md-button>
                 </div>
               </div>
             </md-card-content>
@@ -63,6 +63,7 @@
 import { LoginCard } from "@/components";
 
 export default {
+
   components: {
     LoginCard
   },
