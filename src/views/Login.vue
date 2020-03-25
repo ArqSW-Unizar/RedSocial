@@ -31,7 +31,8 @@
                 <md-input v-model="password" type="PassWord"></md-input>
               </md-field>
               <md-button slot="footer" class="md-info md-round" type="submit" @click="handleSubmit">Aceptar</md-button>
-              <md-button slot="footer" class="md-simple md-info md-lg">
+              
+              <md-button slot="footer" class="md-simple md-info md-lg" type="submit" @click="registrarte">
                 ¿No tienes cuenta?<br>Regístrate aquí
               </md-button>
             </login-card>
@@ -87,7 +88,8 @@ export default {
             this.$session.set('tipo', response.data['tipo'])
             this.$emit('logueado',true)
             this.$router.push('/')
-            //location.reload()
+            location.reload()
+           
             
           }else{
             console.log("Error de autentificación")
@@ -106,10 +108,14 @@ export default {
       
       this.$router.push('/')
       this.actualizar(false)
+      location.reload()
     },
     
     actualizar(b) {
       this.$emit('logueado',b)
+    },
+    registrarte () {
+      this.$router.push({ path: `/registro` })
     }
  },
   bodyClass: "login-page",
