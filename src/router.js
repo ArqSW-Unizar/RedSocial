@@ -4,6 +4,7 @@ import Index from "./views/Index.vue";
 import Login from "./views/Login.vue";
 import Registro from "./views/Registro.vue";
 import Tema from "./views/Tema.vue";
+import Principal from "./views/Principal.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 
@@ -42,6 +43,15 @@ export default new Router({
       components: { default: Tema, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 }
+      }
+    },
+    {
+      path: "/principal",
+      name: "principal",
+      components: { default: Principal, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 150 },
+        footer: { backgroundColor: "black" }
       }
     }
   ],

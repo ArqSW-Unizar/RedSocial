@@ -67,7 +67,7 @@
                               slot="title"
                               class="md-button md-button-link md-white md-simple"
                             >
-                              <i class="material-icons">list</i>
+                              <i class="material-icons">search</i>
                               <p>temas</p>
                             </md-button>
                         </div>
