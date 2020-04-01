@@ -27,39 +27,45 @@
             
           </div>
           <md-table>
+                  <md-table-row>
+                    <md-table-cell> <b>Titulo</b></md-table-cell>
+                    <md-table-cell> <b>Etiqueta</b></md-table-cell>
+                    <md-table-cell> <b>Descripcion</b></md-table-cell>
+                    <md-table-cell> <b>Creador</b></md-table-cell>
+                  </md-table-row>
                   <md-table-row slot="md-table-row" v-for="tema of listafiltrada" :key="tema.id">
  
-                      <md-table-cell md-label="Titulo">
-                        <i  class="material-icons"> games</i> 
-                        <br>
+                      <md-table-cell md-label="Titulo" ><router-link class="routerlink" :to="{path:`/creartema`}">
+                   
+                   
                         {{ tema.titulo }}
-                        <br>
                      
+                      </router-link>
                       </md-table-cell>
 
-                        <md-table-cell md-label="Titulo">
-                        <i  class="material-icons"> games</i> 
-                        <br>
+                        <md-table-cell md-label="Etiqueta">
+                        
                         {{ tema.etiqueta }}
-                        <br>
+                        
                      
                       </md-table-cell>
 
-                      <md-table-cell md-label="Titulo">
-                        <i  class="material-icons"> games</i> 
-                        <br>
+                      <md-table-cell md-label="Descripcion">
+                        
+                       
                         {{ tema.descripcion }}
-                        <br>
+                       
                      
                       </md-table-cell>
 
-                      <md-table-cell md-label="Titulo">
-                        <i  class="material-icons"> games</i> 
-                        <br>
+                      <md-table-cell md-label="Creador">
+                    
                         {{ tema.creador }}
-                        <br>
+                       
                      
                       </md-table-cell>
+
+                    
                       
                       
                   </md-table-row>
