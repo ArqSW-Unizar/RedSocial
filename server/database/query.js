@@ -39,7 +39,7 @@ const crearTema = function (data, res) {
 
 // Consulta donde se obtienen los datos de todos los temas.
 const listaTemas = function (res) {
-  let sql = 'SELECT creador, titulo, descripcion, etiqueta, fecha FROM tema ORDER BY fecha DESC'
+  let sql = 'SELECT id_tema, creador, titulo, descripcion, etiqueta, fecha FROM tema ORDER BY fecha DESC'
   connection.query(sql, function (err, result) {
     if (err) throw err
     if (result[0] === undefined) {

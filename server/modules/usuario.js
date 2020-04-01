@@ -33,7 +33,7 @@ const crearTema = function (req, res) {
 }
 
 const listaTemas = function (req, res) {
-  bd.listaTemas(data, res)
+  bd.listaTemas(res)
 }
 
 module.exports = {

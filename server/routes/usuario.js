@@ -9,5 +9,5 @@ router.use(bodyParser.json())
 router.post('/register', usuario.registrarUsuario)
 router.post('/login', usuario.loginUsuario)
 router.post('/tema', usuario.crearTema)
-router.get('/listatemas', usuario.listaTemas)
+router.get('/listaTemas', usuario.listaTemas)
 module.exports = router
