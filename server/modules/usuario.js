@@ -32,8 +32,13 @@ const crearTema = function (req, res) {
   bd.crearTema(data, res)
 }
 
+const listaTemas = function (req, res) {
+  bd.listaTemas(data, res)
+}
+
 module.exports = {
   registrarUsuario: registrarUsuario,
   loginUsuario: loginUsuario,
-  crearTema: crearTema
+  crearTema: crearTema,
+  listaTemas: listaTemas
 }

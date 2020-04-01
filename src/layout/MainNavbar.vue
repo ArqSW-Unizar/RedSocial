@@ -20,6 +20,60 @@
               <!-- Here you can add your items from the section-start of your toolbar -->
             </mobile-menu>
             <md-list>
+              <template v-if="authenticated">
+                    
+                    <li class="md-list-item">
+                      <a
+                        href="javascript:void(0)"
+                        class="md-list-item-router md-list-item-container md-button-clean"
+                      >
+                        <div class="md-list-item-content">
+                          
+                            <md-button
+                              slot="title"
+                              class="md-button md-button-link md-white md-simple"
+                            >
+                              <i class="material-icons">portrait</i>
+                              <p>Mi perfil</p>
+                            </md-button>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="md-list-item">
+                      <a
+                        href="javascript:void(0)"
+                        class="md-list-item-router md-list-item-container md-button-clean"
+                      >
+                        <div class="md-list-item-content">
+                          
+                            <md-button
+                              slot="title"
+                              class="md-button md-button-link md-white md-simple"
+                            >
+                              <i class="material-icons">people</i>
+                              <p>usuarios</p>
+                            </md-button>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="md-list-item">
+                      <a
+                        href="javascript:void(0)"
+                        class="md-list-item-router md-list-item-container md-button-clean"
+                      >
+                        <div class="md-list-item-content">
+                          
+                            <md-button
+                              slot="title"
+                              class="md-button md-button-link md-white md-simple"
+                            >
+                              <i class="material-icons">list</i>
+                              <p>temas</p>
+                            </md-button>
+                        </div>
+                      </a>
+                    </li>
+                  </template>
               <li class="md-list-item" v-if="showDownload">
                 <a
                   href="javascript:void(0)"
@@ -51,6 +105,8 @@
                   </div>
                 </a>
               </li>
+              
+                  
               <div class="md-collapse">
         </div>
             </md-list>
@@ -109,6 +165,14 @@ export default {
       toggledClass: false,
       tipo: null
     };
+  },
+  created () {
+    this.authenticated = this.$session.exists()
+    this.act = false
+    if (this.$session.exists()) {
+      this.autorizacion = this.$session.get('tipo')
+      this.act = true
+    }
   },
   
   computed: {
