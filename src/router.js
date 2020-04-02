@@ -50,7 +50,7 @@ export default new Router({
       name: "principal",
       components: { default: Principal, header: MainNavbar, footer: MainFooter },
       props: {
-        header: { colorOnScroll: 150 },
+        header: { colorOnScroll: 200 },
         footer: { backgroundColor: "black" }
       }
     }

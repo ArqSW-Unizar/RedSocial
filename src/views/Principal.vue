@@ -3,7 +3,12 @@
     <parallax class="page-header2 header-filter" :style="headerStyle">
       <div class="md-layout">
         <div class="md-layout-item">
-          
+          <div class="image-wrapper">
+            <div class="brand">
+              <h1 >RED SOCIAL - UNIZAR</h1>
+              <h3>Desarrollado para la asignatura de Arquitectura Software.</h3>
+            </div>
+          </div>
         </div>
       </div>
     </parallax>
@@ -92,7 +97,7 @@ export default {
   },
 
   name: "principal",
-  bodyClass: "principal-page",
+  bodyClass: "index-page",
   props: {
     image: {
       type: String,

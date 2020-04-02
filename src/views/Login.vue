@@ -87,7 +87,7 @@ export default {
             this.$session.set('idusuario', response.data['nick'])
             this.$session.set('tipo', response.data['tipo'])
             this.$emit('logueado',true)
-            this.$router.push('/')
+            this.$router.push('/principal')
             location.reload()
            
             

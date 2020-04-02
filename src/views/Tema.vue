@@ -79,12 +79,12 @@ export default {
           let url = 'http://localhost:3000/api/usuario/tema'
         this.$http.post(url, {
           titulo: this.titulo,
-          etiqueta: this.etiqueta,
+          etiqueta: this.etiqueta.toUpperCase() ,
           description: this.description,
           creador: this.$session.get('idusuario')
         })
           .then(response => {
-            this.$router.push('/')
+            this.$router.push('/principal')
           })
         }
         else{
