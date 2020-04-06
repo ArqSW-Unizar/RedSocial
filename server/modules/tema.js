@@ -14,8 +14,16 @@ const crearTema = function (req, res) {
 const listaTemas = function (req, res) {
     bd.listaTemas(res)
 }
+
+const borrarTema = function (req, res) {
+    let data = [
+        req.body.id_tema
+    ]
+    bd.borrarTema(data, res)
+}
   
 module.exports = {
     crearTema: crearTema,
-    listaTemas: listaTemas
+    listaTemas: listaTemas,
+    borrarTema: borrarTema
 }

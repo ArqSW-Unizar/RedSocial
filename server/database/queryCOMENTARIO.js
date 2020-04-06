@@ -8,7 +8,29 @@ const connection = mysql.createConnection({
 })
 
 const crearComentario = function (data, res) {
-    let sql = 'INSERT INTO Tema (creador, titulo, descripcion, etiqueta, fecha) VALUES (?)'
+    let sql = 'INSERT INTO Comentario (id_tema, usuario, contenido, fecha) VALUES (?)'
+    connection.query(sql, [data], function (err, result) {
+      if (err) throw err
+      res.status(200).send()
+    }) 
+} 
+
+// Consulta los comentarios de un tema ordenados por fecha (data = id_tema)
+const listaComentarios = function (data, res) {
+    let sql = 'SELECT usuario, contenido, fecha FROM Comentario WHERE id_tema = ? ORDER BY fecha DESC'
+    connection.query(sql, [data], function (err, result) {
+      if (err) throw err
+      if (result[0] === undefined) {
+        res.status(201).send()
+      } else {
+        res.status(200).send(result)
+      }
+    })
+}
+
+// Borra el comentario indicado (data = id_comentario)
+const borrarComentario = function (data, res) {
+    let sql = 'DELETE id_comentario FROM Comentario WHERE id_comentario = ?'
     connection.query(sql, [data], function (err, result) {
       if (err) throw err
       res.status(200).send()
@@ -16,5 +38,7 @@ const crearComentario = function (data, res) {
 } 
 
 module.exports = {
-    crearComentario: crearComentario
+    crearComentario: crearComentario,
+    listaComentarios: listaComentarios,
+    borrarComentario: borrarComentario
 }

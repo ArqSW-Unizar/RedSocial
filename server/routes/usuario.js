@@ -18,11 +18,11 @@ router.post('/login', usuario.loginUsuario)
 //Funciones del módulo TEMA
 router.post('/tema', tema.crearTema)
 router.get('/listaTemas', tema.listaTemas)
-//router.post('/borrarTema', tema.borrarTema)
+router.post('/borrarTema', tema.borrarTema)
 
 //Funciones del módulo COMENTARIO
-//router.post('/comentario', comentario.crearComentario)
-//router.get('/listaComentarios', comentario.listaComentarios)
-//router.post('/borrarComentario', comentario.borrarComentario)
+router.post('/comentario', comentario.crearComentario)
+router.get('/listaComentarios', comentario.listaComentarios)
+router.post('/borrarComentario', comentario.borrarComentario)
 
 module.exports = router

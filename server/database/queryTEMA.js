@@ -15,8 +15,8 @@ const crearTema = function (data, res) {
     }) 
 } 
   
-  // Consulta donde se obtienen los datos de todos los temas.
-  const listaTemas = function (res) {
+// Consulta donde se obtienen los datos de todos los temas.
+const listaTemas = function (res) {
     let sql = 'SELECT id_tema, creador, titulo, descripcion, etiqueta, fecha FROM Tema ORDER BY fecha DESC'
     connection.query(sql, function (err, result) {
       if (err) throw err
@@ -28,7 +28,25 @@ const crearTema = function (data, res) {
     })
 }
 
+// Borra el tema indicado (data = id_tema)
+const borrarTema = function (data, res) {
+    //Primero se borran los comentarios pertenecientes a ese tema.
+    let sql = 'DELETE id_tema FROM Comentario WHERE id_tema = ?'
+    connection.query(sql, [data], function (err, result) {
+      if (err) throw err
+      res.status(200).send()
+    }) 
+
+    //Después se borra el tema.
+    let sql = 'DELETE id_tema FROM Tema WHERE id_tema = ?'
+    connection.query(sql, [data], function (err, result) {
+      if (err) throw err
+      res.status(200).send()
+    }) 
+} 
+
 module.exports = {
     crearTema: crearTema,
-    listaTemas: listaTemas
+    listaTemas: listaTemas,
+    borrarTema: borrarTema
 }
