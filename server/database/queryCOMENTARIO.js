@@ -30,7 +30,7 @@ const listaComentarios = function (data, res) {
 
 // Borra el comentario indicado (data = id_comentario)
 const borrarComentario = function (data, res) {
-    let sql = 'DELETE id_comentario FROM Comentario WHERE id_comentario = ?'
+    let sql = 'DELETE FROM Comentario WHERE id_comentario = ?'
     connection.query(sql, [data], function (err, result) {
       if (err) throw err
       res.status(200).send()

@@ -31,14 +31,14 @@ const listaTemas = function (res) {
 // Borra el tema indicado (data = id_tema)
 const borrarTema = function (data, res) {
     //Primero se borran los comentarios pertenecientes a ese tema.
-    let sql = 'DELETE id_tema FROM Comentario WHERE id_tema = ?'
+    let sql = 'DELETE FROM Comentario WHERE id_tema = ?'
     connection.query(sql, [data], function (err, result) {
       if (err) throw err
       res.status(200).send()
     }) 
 
     //Después se borra el tema.
-    let sql = 'DELETE id_tema FROM Tema WHERE id_tema = ?'
+    let sql = 'DELETE FROM Tema WHERE id_tema = ?'
     connection.query(sql, [data], function (err, result) {
       if (err) throw err
       res.status(200).send()
