@@ -17,7 +17,7 @@ const crearComentario = function (data, res) {
 
 // Consulta los comentarios de un tema ordenados por fecha (data = id_tema)
 const listaComentarios = function (data, res) {
-    let sql = 'SELECT usuario, contenido, fecha FROM Comentario WHERE id_tema = ? ORDER BY fecha DESC'
+    let sql = 'SELECT id_comentario, usuario, contenido, fecha FROM Comentario WHERE id_tema = ? ORDER BY fecha DESC'
     connection.query(sql, [data], function (err, result) {
       if (err) throw err
       if (result[0] === undefined) {
