@@ -1,4 +1,4 @@
-const bd = require('../database/queryUSUARIO')
+const bd = require('../database/queryTEMA')
 
 const crearTema = function (req, res) {
     let data = [
