@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="section page-header header-filter" :style="headerStyle">
+    <div class="section page-header3 header-filter" :style="headerStyle">
       <div class="container">
         <br><br><br>
         <br><br>

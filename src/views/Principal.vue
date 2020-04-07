@@ -40,7 +40,7 @@
                   </md-table-row>
                   <md-table-row slot="md-table-row" v-for="tema of listafiltrada" :key="tema.id">
  
-                      <md-table-cell md-label="Titulo" ><router-link class="routerlink" :to="{path:`/creartema`}">
+                      <md-table-cell md-label="Titulo" ><router-link class="routerlink" :to="{path:`/tema?id=${tema.id}`}">
                    
                    
                         {{ tema.titulo }}
@@ -105,7 +105,6 @@ export default {
     }
   },
   beforeMount(){
-      console.log("AAAAAAAAA")
     let url = 'http://localhost:3000/api/usuario/listaTemas'
     this.$http.get(url)
       .then(response => {

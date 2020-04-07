@@ -4,7 +4,7 @@
       :md-active.sync="errores.exist"
       :md-title= "errores.title"
       :md-content= "errores.msg" />
-    <div class="section page-header header-filter" :style="headerStyle">
+    <div class="section page-header3 header-filter" :style="headerStyle">
       <div class="container">
         <div class="md-layout">
           <div
