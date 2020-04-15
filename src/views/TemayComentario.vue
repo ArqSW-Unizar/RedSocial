@@ -19,9 +19,10 @@
       <div class="section section-basic">
         <div class="container">
           <div class="title">
-            <h2>{{titulo}}</h2>
+            <h2>{{titulo}}</h2> 
             <p class="description">Descripción: {{descripcion}}</p>
             <p class="description">Creador: {{creador}}</p>
+            
             
           </div>
           
@@ -68,6 +69,7 @@
                 <div >
               <md-button slot="footer" class="md-info md-round" type="submit" @click="añadirComentario()"> <i class="material-icons">add_circle</i> Añadir</md-button>
               
+              <md-button v-if="esCreador" slot="footer" class="md-danger md-round" type="submit" @click="añadirComentario()"> Eliminar tema</md-button>
             
           </div>
             
@@ -88,6 +90,7 @@ export default {
       listafiltrada: [],
       listaComentarios: [],
       search: null,
+      esCreador: false,
       id_tema:"",
       creador:"",
       titulo:"",
@@ -147,6 +150,9 @@ export default {
                 this.descripcion= response.data['descripcion']
                 this.etiqueta= response.data['etiqueta']
                 this.fecha= response.data['fecha']
+                if (this.creador === this.$session.get('idusuario')){
+                  this.esCreador = true;
+                }
                 
             }
             })
