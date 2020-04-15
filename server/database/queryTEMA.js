@@ -34,15 +34,19 @@ const borrarTema = function (data, res) {
     let sql = 'DELETE FROM Comentario WHERE id_tema = ?'
     connection.query(sql, [data], function (err, result) {
       if (err) throw err
-      res.status(200).send()
-    }) 
+      else{
+        let sql = 'DELETE FROM Tema WHERE id_tema = ?'
+        connection.query(sql, [data], function (err, result) {
+          if (err) throw err
+          res.status(200).send()
+        } 
+        )
+      }
+  })
 /*
     //Después se borra el tema.
-    let sql = 'DELETE FROM Tema WHERE id_tema = ?'
-    connection.query(sql, [data], function (err, result) {
-      if (err) throw err
-      res.status(200).send()
-    }) */
+    
+     */
 } 
 
 // Consulta donde se obtiene la informacion del usuario. Posteriormente se reenvia esta informacion a la pagina correspondiente.

@@ -69,7 +69,7 @@
                 <div >
               <md-button slot="footer" class="md-info md-round" type="submit" @click="añadirComentario()"> <i class="material-icons">add_circle</i> Añadir</md-button>
               
-              <md-button v-if="esCreador" slot="footer" class="md-danger md-round" type="submit" @click="añadirComentario()"> Eliminar tema</md-button>
+              <md-button v-if="esCreador" slot="footer" class="md-danger md-round" type="submit" @click="borrarTema()"> Eliminar tema</md-button>
             
           </div>
             
@@ -178,8 +178,20 @@ export default {
             this.errores.msg = 'Está intentando añadir un comentario sin iniciar sesión.'
             this.errores.exist = true
         }
+    },
+    borrarTema(){
+      let url = 'http://localhost:3000/api/usuario/borrarTema/'
+      this.$http.post(url, {
+          id_tema: this.$route.query.id
+      }).then(response => {
+            if (response.status === 200) {
+              this.$router.push('/principal')
+              location.reload()   
+            }
+      })
     }
   },
+
   computed: {
     headerStyle() {
       return {
