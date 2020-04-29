@@ -1,15 +1,8 @@
-var mysql = require('mysql')
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'RedSocial',
-  port: 3306
-})
+const connection = require('./connection')
 
 const crearTema = function (data, res) {
     let sql = 'INSERT INTO Tema (creador, titulo, descripcion, etiqueta, fecha) VALUES (?)'
-    connection.query(sql, [data], function (err, result) {
+    connection.connection.query(sql, [data], function (err, result) {
       if (err) throw err
       res.status(200).send()
     }) 
@@ -18,7 +11,7 @@ const crearTema = function (data, res) {
 // Consulta donde se obtienen los datos de todos los temas.
 const listaTemas = function (res) {
     let sql = 'SELECT id_tema, creador, titulo, descripcion, etiqueta, fecha FROM Tema ORDER BY fecha DESC'
-    connection.query(sql, function (err, result) {
+    connection.connection.query(sql, function (err, result) {
       if (err) throw err
       if (result[0] === undefined) {
         res.status(201).send()
@@ -32,11 +25,11 @@ const listaTemas = function (res) {
 const borrarTema = function (data, res) {
     //Primero se borran los comentarios pertenecientes a ese tema.
     let sql = 'DELETE FROM Comentario WHERE id_tema = ?'
-    connection.query(sql, [data], function (err, result) {
+    connection.connection.query(sql, [data], function (err, result) {
       if (err) throw err
       else{
         let sql = 'DELETE FROM Tema WHERE id_tema = ?'
-        connection.query(sql, [data], function (err, result) {
+        connection.connection.query(sql, [data], function (err, result) {
           if (err) throw err
           res.status(200).send()
         } 
@@ -52,7 +45,7 @@ const borrarTema = function (data, res) {
 // Consulta donde se obtiene la informacion del usuario. Posteriormente se reenvia esta informacion a la pagina correspondiente.
 const info = function (data, res) {
   let sql = 'SELECT id_tema, creador, titulo, descripcion, etiqueta, fecha FROM tema WHERE id_tema = ? '
-  connection.query(sql, data, function (err, result) {
+  connection.connection.query(sql, data, function (err, result) {
     
     if (err) throw err
     if (result[0] === undefined) {

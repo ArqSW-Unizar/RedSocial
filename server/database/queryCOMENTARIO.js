@@ -1,15 +1,8 @@
-var mysql = require('mysql')
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'RedSocial',
-  port: 3306
-})
+const connection = require('./connection')
 
 const crearComentario = function (data, res) {
     let sql = 'INSERT INTO Comentario (id_tema, usuario, contenido, fecha) VALUES (?)'
-    connection.query(sql, [data], function (err, result) {
+    connection.connection.query(sql, [data], function (err, result) {
       if (err) throw err
       res.status(200).send()
     }) 
@@ -19,14 +12,12 @@ const crearComentario = function (data, res) {
 const listaComentarios = function (data, res) {
     console.log("Antes de la consulta")
     let sql = 'SELECT id_comentario, usuario, contenido, fecha FROM Comentario WHERE id_tema = ? ORDER BY fecha DESC'
-    connection.query(sql, data, function (err, result) {
+    connection.connection.query(sql, data, function (err, result) {
       console.log("Despues de la consulta")
       if (err) throw err
-      if (result[0] === undefined) {
-        
+      if (result[0] === undefined) {  
         res.status(201).send()
       } else {
-        
         res.status(200).send(result)
       }
     })
@@ -35,7 +26,7 @@ const listaComentarios = function (data, res) {
 // Borra el comentario indicado (data = id_comentario)
 const borrarComentario = function (data, res) {
     let sql = 'DELETE FROM Comentario WHERE id_comentario = ?'
-    connection.query(sql, [data], function (err, result) {
+    connection.connection.query(sql, [data], function (err, result) {
       if (err) throw err
       res.status(200).send()
     }) 
