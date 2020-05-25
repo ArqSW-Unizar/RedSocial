@@ -84,7 +84,7 @@ export default {
           creador: this.$session.get('idusuario')
         })
           .then(response => {
-            this.$router.push('/principal')
+            this.$router.push('/')
           })
         }
         else{

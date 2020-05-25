@@ -4,6 +4,8 @@ import Index from "./views/Index.vue";
 import Login from "./views/Login.vue";
 import Registro from "./views/Registro.vue";
 import Tema from "./views/Tema.vue";
+import Perfil from "./views/Perfil.vue";
+
 import Temaycomentario from "./views/TemayComentario.vue";
 import Principal from "./views/Principal.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
@@ -13,15 +15,6 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
-    {
-      path: "/",
-      name: "index",
-      components: { default: Index, header: MainNavbar, footer: MainFooter },
-      props: {
-        header: { colorOnScroll: 400 },
-        footer: { backgroundColor: "black" }
-      }
-    },
     {
       path: "/login",
       name: "login",
@@ -47,7 +40,7 @@ export default new Router({
       }
     },
     {
-      path: "/principal",
+      path: "/",
       name: "principal",
       components: { default: Principal, header: MainNavbar, footer: MainFooter },
       props: {
@@ -61,6 +54,15 @@ export default new Router({
       components: { default: Temaycomentario, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 100 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/perfil",
+      name: "perfil",
+      components: { default: Perfil, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 5 },
         footer: { backgroundColor: "black" }
       }
     }

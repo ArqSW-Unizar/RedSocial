@@ -33,8 +33,8 @@
                               slot="title"
                               class="md-button md-button-link md-white md-simple"
                             >
-                              <i class="material-icons">portrait</i>
-                              <p>Mi perfil</p>
+                              <i class="material-icons" >portrait</i>
+                              <p><a href="#/perfil">Mi perfil</a></p>
                             </md-button>
                         </div>
                       </a>
@@ -68,7 +68,7 @@
                               class="md-button md-button-link md-white md-simple"
                             >
                               <i class="material-icons">home</i>
-                              <p>temas</p>
+                              <p><a href="#/">temas</a></p>
                             </md-button>
                         </div>
                       </a>

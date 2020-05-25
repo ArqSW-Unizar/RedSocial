@@ -185,7 +185,7 @@ export default {
           id_tema: this.$route.query.id
       }).then(response => {
             if (response.status === 200) {
-              this.$router.push('/principal')
+              this.$router.push('/')
               location.reload()   
             }
       })

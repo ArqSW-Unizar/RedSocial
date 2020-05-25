@@ -14,6 +14,11 @@ router.use(bodyParser.json())
 //Funciones del módulo USUARIO
 router.post('/register', usuario.registrarUsuario)
 router.post('/login', usuario.loginUsuario)
+router.post('/info/:id', usuario.info)
+router.post('/actualizarPerfil/:id', usuario.actualizarPerfil)
+router.post('/dardebaja/:id', usuario.darBaja)
+
+
 
 //Funciones del módulo TEMA
 router.post('/tema', tema.crearTema)
