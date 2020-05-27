@@ -80,7 +80,7 @@
               <i class="material-icons">add_circle</i> Añadir
             </md-button>
             <md-button
-              v-if="esCreador"
+              
               slot="footer"
               class="md-info md-round"
               type="submit"
@@ -173,7 +173,7 @@ export default {
           this.descripcion = response.data["descripcion"];
           this.etiqueta = response.data["etiqueta"];
           this.fecha = response.data["fecha"];
-          if (this.creador === this.$session.get("idusuario")) {
+          if (this.creador === this.$session.get("idusuario") || this.$session.get("tipo") === "admin") {
             this.esCreador = true;
           }
         }
@@ -227,7 +227,7 @@ export default {
         });
     },
     esDueño(autor) {
-      return autor === this.$session.get("idusuario");
+      return (autor === this.$session.get("idusuario") || this.$session.get("tipo") === "admin");
     },
     share(){
       this.errores.title = "Comparte este mensaje";

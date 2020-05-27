@@ -65,6 +65,15 @@ export default new Router({
         header: { colorOnScroll: 5 },
         footer: { backgroundColor: "black" }
       }
+    },
+      {
+      path: "*",
+      name: "principal2",
+      components: { default: Principal, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 200 },
+        footer: { backgroundColor: "black" }
+      }
     }
   ],
   scrollBehavior: to => {
