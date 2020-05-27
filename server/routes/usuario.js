@@ -24,7 +24,7 @@ router.post('/dardebaja/:id', usuario.darBaja)
 router.post('/tema', tema.crearTema)
 router.get('/listaTemas', tema.listaTemas)
 router.post('/borrarTema', tema.borrarTema)
-router.post('/info/:id', tema.info)
+router.post('/info2/:id', tema.info)
 
 
 //Funciones del módulo COMENTARIO

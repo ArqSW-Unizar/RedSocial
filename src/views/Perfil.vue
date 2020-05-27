@@ -12,43 +12,6 @@
       <div class="container">
         <div class="md-layout">
           <div class="md-layout-item mx-auto">
-            <!-- <md-card>
-              <md-card-header :data-background-color="dataBackgroundColor">
-                <h4 class="title">Editar Perfil</h4>
-                <p class="category">Completa los datos de tu perfil</p>
-              </md-card-header>
-              <md-card-content>
-                <div class="md-layout">
-                  <div class="md-layout-item md-small-size-100 md-size-33">
-                    <md-field>
-                      <label>Nombre</label>
-                      <md-input v-model="username" type="text"></md-input>
-                    </md-field>
-                  </div>
-                  <div class="md-layout-item md-small-size-100 md-size-33">
-                    <md-field>
-                      <label>Email</label>
-                      <md-input v-model="emailadress" type="email"></md-input>
-                    </md-field>
-                  </div>
-                  <div class="md-layout-item md-size-100">
-                    <md-field maxlength="5" v-if="editarAvatar">
-                      <label>URL de la imagen de mi nuevo a avatar</label>
-                      <md-textarea v-model="url_avatar"></md-textarea>
-                    </md-field>
-                  </div>
-
-                  <div class="md-layout-item md-size-100 text-left">
-                    <md-button
-                      class="md-raised"
-                      type="submit"
-                      :data-background-color="dataBackgroundColor"
-                      @click="showmodal"
-                    >Actualizar perfil</md-button>
-                  </div>
-                </div>
-              </md-card-content>
-            </md-card>-->
             <login-card header-color="info">
               <h4 slot="title" class="card-title">Mi perfil</h4>
 
