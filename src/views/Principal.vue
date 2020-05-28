@@ -108,7 +108,7 @@ export default {
     search: function (val) {
       if (this.listatemas != null) {
         this.listafiltrada = this.listatemas.filter(function (tema) {
-          return tema['titulo'].toLowerCase().includes(val.toLowerCase())
+          return tema['titulo'].toLowerCase().includes(val.toLowerCase()) || tema['etiqueta'].toLowerCase().includes(val.toLowerCase())
         })
       }
     }
