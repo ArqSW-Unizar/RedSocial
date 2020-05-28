@@ -24,7 +24,7 @@
               <form>
                 <md-field>
                     <md-icon>search</md-icon> 
-                        <label>Titulo del tema</label>
+                        <label>Titulo/Etiqueta del tema</label>
                     <md-input v-model="search" type="text"></md-input>
                     
                 </md-field>
