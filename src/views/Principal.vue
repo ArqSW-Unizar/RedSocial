@@ -104,6 +104,15 @@ export default {
       default: require("@/assets/img/Fondo_Ada_Byron.jpg")
     }
   },
+  watch: {
+    search: function (val) {
+      if (this.listatemas != null) {
+        this.listafiltrada = this.listatemas.filter(function (tema) {
+          return tema['titulo'].toLowerCase().includes(val.toLowerCase())
+        })
+      }
+    }
+  },
   beforeMount(){
     let url = 'http://localhost:3000/api/usuario/listaTemas'
     this.$http.get(url)
@@ -113,11 +122,14 @@ export default {
           console.log(datos)
           for (var i = 0; i < datos.length; i++) {
             this.listafiltrada.push({ id: datos[i].id_tema, creador: datos[i].creador, 
-            titulo: datos[i].titulo, descripcion: datos[i].descripcion, etiqueta: datos[i].etiqueta, fecha: datos[i].fecha })
+            titulo: datos[i].titulo, descripcion: datos[i].descripcion, etiqueta: datos[i].etiqueta, fecha: datos[i].fecha });
+            this.listatemas.push({ id: datos[i].id_tema, creador: datos[i].creador, 
+            titulo: datos[i].titulo, descripcion: datos[i].descripcion, etiqueta: datos[i].etiqueta, fecha: datos[i].fecha });
           }
         }
         else{
-            console.log("SSSSS")
+            this.listafiltrada = null;
+            this.listatemas = null;
         }
       })
 },
