@@ -23,7 +23,6 @@ import VueRouter from 'vue-router'
 import Axios from 'axios'
 
 import MaterialKit from "./plugins/material-kit";
-import Chartist from 'chartist'
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
@@ -74,19 +73,10 @@ Vue.mixin({
   }
 });
 
-// global library setup
-Object.defineProperty(Vue.prototype, '$Chartist', {
-  get () {
-    return this.$root.Chartist
-  }
-})
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   render: h => h(App),
-  router,
-  data: {
-    Chartist: Chartist
-  }
+  router
 })

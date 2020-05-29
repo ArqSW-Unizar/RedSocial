@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Index from "./views/Index.vue";
 import Login from "./views/Login.vue";
 import Registro from "./views/Registro.vue";
 import Tema from "./views/Tema.vue";
