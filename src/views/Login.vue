@@ -73,7 +73,6 @@ export default {
   },
   methods: {
     handleSubmit (e) {
-      console.log("Entra al boton")
       e.preventDefault()
       let url = 'http://localhost:3000/api/usuario/login'
       this.$http.post(url, {
@@ -81,7 +80,6 @@ export default {
         password: this.sha512(this.password).toString()
       })
         .then(response => {
-          console.log("Llega respuesta")
           if (response.status === 200) {
             this.$session.start()
             this.$session.set('idusuario', response.data['nick'])
@@ -92,7 +90,6 @@ export default {
            
             
           }else{
-            console.log("Error de autentificación")
             this.errores.title = 'Error'
             this.errores.msg = 'Usuario y/o contraseña incorrectos. Vuelva a intentarlo'
             this.errores.exist = true

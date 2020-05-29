@@ -75,7 +75,6 @@ export default {
   },
   methods: {
     handleSubmit () {
-      console.log("Entra a registrar")
       if (this.password === this.passrepeat && this.password.length > 0) {
         let url = 'http://localhost:3000/api/usuario/register'
         this.$http.post(url, {

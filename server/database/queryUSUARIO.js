@@ -24,8 +24,6 @@ const login = function (data, res) {
 const info = function (data, res) {
   let sql = 'SELECT nick, correo, nombre FROM Usuario WHERE nick = ? '
   connection.connection.query(sql, data, function (err, result) {
-    console.log(data)
-    console.log(result)
     if (err) throw err
     if (result[0] === undefined) {
       res.status(400).send()

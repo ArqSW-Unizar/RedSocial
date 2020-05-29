@@ -119,7 +119,6 @@ export default {
       .then(response => {
         if (response.status === 200) {
           let datos = response.data
-          console.log(datos)
           for (var i = 0; i < datos.length; i++) {
             this.listafiltrada.push({ id: datos[i].id_tema, creador: datos[i].creador, 
             titulo: datos[i].titulo, descripcion: datos[i].descripcion, etiqueta: datos[i].etiqueta, fecha: datos[i].fecha });

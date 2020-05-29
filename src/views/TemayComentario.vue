@@ -143,7 +143,6 @@ export default {
     this.$http.get(url).then(response => {
       if (response.status === 200) {
         let datos = response.data;
-        console.log(datos);
         for (var i = 0; i < datos.length; i++) {
           this.listaComentarios.push({
             id_comentario: datos[i].id_comentario,
@@ -162,7 +161,6 @@ export default {
   },
   methods: {
     info() {
-      console.log("Veamos que tema busca = " + this.$route.query.id);
       let url =
         "http://localhost:3000/api/usuario/info2/" + this.$route.query.id + "";
       this.$http.post(url).then(response => {
@@ -191,7 +189,6 @@ export default {
           })
           .then(response => {
             //this.$router.push({ path: `tema/tema?id=${id_tema}` })
-            console.log("Entra aqui?");
             location.reload();
           });
       } else {

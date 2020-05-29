@@ -10,10 +10,8 @@ const crearComentario = function (data, res) {
 
 // Consulta los comentarios de un tema ordenados por fecha (data = id_tema)
 const listaComentarios = function (data, res) {
-    console.log("Antes de la consulta")
     let sql = 'SELECT id_comentario, usuario, contenido, fecha FROM Comentario WHERE id_tema = ? ORDER BY fecha DESC'
     connection.connection.query(sql, data, function (err, result) {
-      console.log("Despues de la consulta")
       if (err) throw err
       if (result[0] === undefined) {  
         res.status(201).send()
